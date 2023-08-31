@@ -1,8 +1,3 @@
-## sbt project compiled with Scala 3
+## Order Service with gRPC
 
-### Usage
-
-This is a normal sbt project. You can compile code with `sbt compile`, run it with `sbt run`, and `sbt console` will start a Scala 3 REPL.
-
-For more information on the sbt-dotty plugin, see the
-[scala3-example-project](https://github.com/scala/scala3-example-project/blob/main/README.md).
+This order service project is developed with Scalapb and fs2-grpc. This code is associated with [this](https://blog.rockthejvm.com/) article written by me on the rockthejvm.com blog.
