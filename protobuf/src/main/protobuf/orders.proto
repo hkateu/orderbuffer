@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package com.xonal.protos;
+
+import "scalapb/scalapb.proto";
+
+option (scalapb.options) = {
+  import: "com.xonal.protos.given"
+};
+
+service Order {
+  rpc SendOrderStream (stream OrderRequest) returns (stream OrderReply) {}
+}
+
+message Item{
+  string name =1;
+  int32 qty = 2;
+  double amount = 3 [(scalapb.field).type = "squants.market.Money"];
+}
+
+message OrderRequest {
+  int32 orderid = 1;
+  repeated Item items = 2;
+}
+
+message OrderReply {
+  int32 orderid = 1;
+  repeated Item items = 2;
+  double total = 3 [(scalapb.field).type = "squants.market.Money"];
+}

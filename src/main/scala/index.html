@@ -1,0 +1,175 @@
+<html>
+  <body>
+    <H1>Xonal Mobile Store</H1>    
+    <p>Select a phone and quantity from each category.</p>
+    <div style="display: flex">
+      <form>
+        <fieldset>
+          <span style="font-weight: bold; color: darkorchid">Samsung</span><br />
+          <span style="color: crimson">FlagShip Phones</span><br />
+          <input type="radio" id="phone1" name="flagship" value="s23"/>
+          <label for="phone1">Samsung Galaxy s23 Ultra -> $999.99</label><br />
+          <input type="radio" id="phone2" name="flagship" value="fold5" checked/>
+          <label for="phone2">Samsung Galaxy Z Fold 5 -> $1800.00</label><br />
+          <input type="radio" id="phone3" name="flagship" value="note"/>
+          <label for="phone3">Samsung Galaxy Note 23 -> $1000.00</label><br />
+          <span style="color: crimson">Quantity</span><br />
+          <input type="number" name="flagshipQty" min=1 max=4 value="1"/><br />
+          <br />
+          <span style="color: crimson">Budget Phones</span><br />
+          <input type="radio" id="phone4" name="budget" value="a23" checked/>
+          <label for="gs1">Samsung Galaxy A23 5G -> $299.99</label><br />
+          <input type="radio" id="phone5" name="budget" value="a54" />
+          <label for="gs2">Samsung Galaxy A54 -> $449.99</label><br />
+          <input type="radio" id="phone6" name="budget" value="a42" />
+          <label for="gs3">Samsung A42 5G -> $399.99</label><br />
+          <span style="color: crimson">Quantity</span><br />
+          <input type="number" name="budgetQty" min=1 max=4 value="1"/><br />
+          <br />
+        </fieldset>
+      </form>
+      <form>
+        <fieldset>
+          <span style="font-weight: bold; color: darkorchid">Motorola</span><br />
+          <span style="color: crimson">FlagShip Phones</span><br />
+          <input type="radio" id="phone1" name="flagship" value="edgeNew" checked/>
+          <label for="phone1">Motorola Moto Edge+ -> $799.99</label><br />
+          <input type="radio" id="phone2" name="flagship" value="razr" />
+          <label for="phone2">Motorola Moto Razr+ -> $899.99</label><br />
+          <input type="radio" id="phone3" name="flagship" value="think" />
+          <label for="phone3">Motorola ThinkPhone -> $700.00</label><br />
+          <span style="color: crimson">Quantity</span><br />
+          <input type="number" name="flagshipQty" min=1 max=4 value="1"/><br />
+          <br />
+          <span style="color: crimson">Budget Phones</span><br />
+          <input type="radio" id="phone4" name="budget" value="edgeOld" />
+          <label for="gs1">Motorola Moto Edge -> $249.99</label><br />
+          <input type="radio" id="phone5" name="budget" value="stylus" />
+          <label for="gs2">Moto G Stylus 5G -> $300.00</label><br />
+          <input type="radio" id="phone6" name="budget" value="motog" checked/>
+          <label for="gs3">Moto G Power -> $250.00</label><br />
+          <span style="color: crimson">Quantity</span><br />
+          <input type="number" name="budgetQty" min=1 max=4 value="1"><br />
+          <br />
+        </fieldset>
+      </form>
+      <form>
+        <fieldset>
+          <span style="font-weight: bold; color: darkorchid">Sony</span><br />
+          <span style="color: crimson">FlagShip Phones</span><br />
+          <input type="radio" id="phone1" name="flagship" value="fiveiv" />
+          <label for="phone1">Sony Xperia 5 IV -> $1099.99</label><br />
+          <input type="radio" id="phone2" name="flagship" value="onev" />
+          <label for="phone2">Sony Xperia 1 V -> $1199.00</label><br />
+          <input type="radio" id="phone3" name="flagship" value="pro" checked/>
+          <label for="phone3">Sony Xperia Pro-1 -> $999.99</label><br />
+          <span style="color: crimson">Quantity</span><br />
+          <input type="number" name="flagshipQty" min=1 max=4 value="1"/><br />
+          <br />
+          <span style="color: crimson">Budget Phones</span><br />
+          <input type="radio" id="phone4" name="budget" value="lfour" />
+          <label for="gs1">Sony Xperia L4 -> $270.00</label><br />
+          <input type="radio" id="phone5" name="budget" value="teniv" checked/>
+          <label for="gs2">Sony Xperia 10 IV -> $200.00</label><br />
+          <input type="radio" id="phone6" name="budget" value="tenv" />
+          <label for="gs3">Sony Xperia 10 V -> $409.00</label><br />
+          <span style="color: crimson">Quantity</span><br />
+          <input type="number" name="budgetQty" min=1 max=4 value="1"/><br />
+          <br />
+        </fieldset>
+      </form>
+    </div>
+    <div>
+      <button id="submitBtn">Submit All</button>
+    </div>
+    <div id="reply"></div>
+    <script>
+      const prices = {
+        s23: 999.99,
+        fold5: 1800.00,
+        note: 1000.00,
+        a23: 299.99,
+        a54: 449.99,
+        a42: 399.99,
+        edgeNew: 799.99,
+        razr: 899.99,
+        think: 700.00,
+        edgeOld: 249.99,
+        stylus: 300.00,
+        motog: 250.00,
+        fiveiv: 1099.99,
+        onev: 1199.00,
+        pro: 999.99,
+        lfour: 270.00,
+        teniv: 200.00,
+        tenv: 409.00,
+      };
+      const names = {
+        s23: "Samsung Galaxy s23 Ultra",
+        fold5: "Samsung Galaxy Z Fold 5",
+        note: "Samsung Galaxy Note 23",
+        a23: "Samsung Galaxy A23 5G ",
+        a54: "Samsung Galaxy A54",
+        a42: "Samsung A42 5G",
+        edgeNew: "Motorola Moto Edge+",
+        razr: "Motorola Moto Razr+",
+        think: "Motorola ThinkPhone",
+        edgeOld: "Motorola Moto Edge",
+        stylus: "Moto G Stylus 5G",
+        motog: "Moto G Power",
+        fiveiv: "Sony Xperia 5 IV",
+        onev: "Sony Xperia 1 V",
+        pro: "Sony Xperia Pro-1",
+        lfour: "Sony Xperia L4",
+        teniv: "Sony Xperia 10 IV",
+        tenv: "Sony Xperia 10 V",
+      };
+
+      const forms = document.getElementsByTagName("form");
+
+      const myButton = document.getElementById("submitBtn");
+      const replyDiv = document.getElementById("reply");
+
+      myButton.addEventListener("click", (event) => {
+        var orderObj = { orders: [] };
+        for (let i = 0; i < forms.length; i++) {
+          const formData = new FormData(forms[i]);
+          const jsonObject = Object.fromEntries(formData);
+        
+          var jsonFormatted = {
+            items: [
+              {
+                name: names[jsonObject["flagship"]],
+                quantity: jsonObject["flagshipQty"],
+                amount: prices[jsonObject["flagship"]],
+              },
+              {
+                name: names[jsonObject["budget"]],
+                quantity: jsonObject["budgetQty"],
+                amount: prices[jsonObject["budget"]],
+              },
+            ],
+          };
+          orderObj.orders.push(jsonFormatted);
+        }
+
+        async function sendForm() {
+          const res = await fetch("http://localhost:8080/submit", {
+            method: "POST",
+            body: JSON.stringify(orderObj),
+          });
+          const resData = await res.json();
+          return resData;
+        }
+        return sendForm()
+          .then((arr) => arr.map((str) => {
+            var p = document.createElement('p')
+            p.textContent = str;
+            p.style.color = "darkorchid";
+            replyDiv.appendChild(p);
+          }))
+          .catch((err) => (replyDiv.innerHTML = err));
+      });
+    </script>
+  </body>
+</html>
