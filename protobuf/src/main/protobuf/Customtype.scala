@@ -1,4 +1,4 @@
-package com.xonal.protos
+package com.rockthejvm.protos
 
 import squants.market.{USD, Money}
 import scalapb.TypeMapper

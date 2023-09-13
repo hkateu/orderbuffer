@@ -1,10 +1,10 @@
-package com.xonal.service
+package com.rockthejvm.service
 
 import weaver.*
 import cats.effect.*
 import fs2.Stream
 import io.grpc.Metadata
-import com.xonal.SampleData.{myItems, sampleOrder}
+import com.rockthejvm.SampleData.{myItems, sampleOrder}
 
 object OrderServiceSuite extends SimpleIOSuite {
   val osInstance = new OrderService

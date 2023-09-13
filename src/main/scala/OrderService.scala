@@ -1,10 +1,10 @@
-package com.xonal.service
+package com.rockthejvm.service
 
-import com.xonal.protos.orders.*
+import com.rockthejvm.protos.orders.*
 import cats.effect.*
-import _root_.io.grpc.*
+import io.grpc.*
 import fs2.Stream
-import _root_.io.grpc.netty.shaded.io.grpc.netty.NettyServerBuilder
+import io.grpc.netty.shaded.io.grpc.netty.NettyServerBuilder
 import fs2.grpc.syntax.all.*
 
 class OrderService extends OrderFs2Grpc[IO, Metadata] {

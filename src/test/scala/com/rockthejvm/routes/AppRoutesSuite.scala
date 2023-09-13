@@ -1,4 +1,4 @@
-package com.xonal.routes
+package com.rockthejvm.routes
 
 import weaver.*
 import cats.effect.*

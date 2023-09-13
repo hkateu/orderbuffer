@@ -1,6 +1,6 @@
 val scala3Version = "3.3.0"
 val http4sVersion = "0.23.23"
-val circeVersion = "0.14.5"
+val weaverVersion = "0.8.3"
 val squantsVersion = "1.8.3"
 
 lazy val protobuf =
@@ -25,7 +25,7 @@ lazy val root =
         "org.http4s" %% "http4s-ember-server" % http4sVersion,
         "org.http4s" %% "http4s-dsl" % http4sVersion,
         "org.http4s" %% "http4s-circe" % http4sVersion,
-        "com.disneystreaming" %% "weaver-cats" % "0.8.3" % Test,
+        "com.disneystreaming" %% "weaver-cats" % weaverVersion % Test
       ),
       testFrameworks += new TestFramework("weaver.framework.CatsEffect")
     )

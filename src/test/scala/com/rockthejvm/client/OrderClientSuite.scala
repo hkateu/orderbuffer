@@ -1,16 +1,17 @@
-package com.xonal.client
+package com.rockthejvm.client
 
 import weaver.*
 import cats.effect.*
-import com.xonal.protos.orders.{Item, OrderRequest}
-import com.xonal.client.Client.*
+import com.rockthejvm.protos.orders.{Item, OrderRequest}
+import com.rockthejvm.client.Client.*
 import fs2.Stream
+import squants.market.USD
 
 object OrderClientSuite extends SimpleIOSuite {
 
   val myItems: Seq[Item] = Seq(
-    Item.of("Iphone", 2, 1000),
-    Item.of("Motorolla", 1, 900)
+    Item.of("Iphone", 2, USD(999.99)),
+    Item.of("Motorolla", 1, USD(900.50))
   )
 
   val sampleOrder = OrderRequest(

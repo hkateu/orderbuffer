@@ -1,16 +1,12 @@
 syntax = "proto3";
 
-package com.xonal.protos;
+package com.rockthejvm.protos;
 
 import "scalapb/scalapb.proto";
 
 option (scalapb.options) = {
-  import: "com.xonal.protos.given"
+  import: "com.rockthejvm.protos.given"
 };
-
-service Order {
-  rpc SendOrderStream (stream OrderRequest) returns (stream OrderReply) {}
-}
 
 message Item{
   string name =1;
@@ -28,3 +24,12 @@ message OrderReply {
   repeated Item items = 2;
   double total = 3 [(scalapb.field).type = "squants.market.Money"];
 }
+
+service Order {
+  rpc SendOrderStream (stream OrderRequest) returns (stream OrderReply) {}
+}
+
+
+
+
+
