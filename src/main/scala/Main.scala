@@ -14,9 +14,11 @@ object Main extends IOApp {
       .withHttpApp(restService.orNotFound)
       .build
       .use(_ => IO.never)
-
   def run(args: List[String]): IO[ExitCode] =
-    (httpServerStream, grpcServer)
+    (
+      httpServerStream,
+      grpcServer
+    )
       .parMapN((http, grpc) => ())
       .as(ExitCode.Success)
 }

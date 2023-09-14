@@ -23,6 +23,7 @@ lazy val root =
       libraryDependencies ++= Seq(
         "io.grpc" % "grpc-netty-shaded" % scalapb.compiler.Version.grpcJavaVersion,
         "org.http4s" %% "http4s-ember-server" % http4sVersion,
+        "org.http4s" %% "http4s-ember-client" % http4sVersion,
         "org.http4s" %% "http4s-dsl" % http4sVersion,
         "org.http4s" %% "http4s-circe" % http4sVersion,
         "com.disneystreaming" %% "weaver-cats" % weaverVersion % Test

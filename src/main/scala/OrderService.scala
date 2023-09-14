@@ -26,12 +26,22 @@ object Server {
   private val orderService: Resource[IO, ServerServiceDefinition] =
     OrderFs2Grpc.bindServiceResource[IO](new OrderService)
 
-  private def runServer(service: ServerServiceDefinition) = NettyServerBuilder
-    .forPort(9999)
-    .addService(service)
-    .resource[IO]
-    .evalMap(server => IO(server.start()))
-    .useForever
+  private def runServer(
+      service: ServerServiceDefinition
+  ): Resource[IO, Server] =
+    NettyServerBuilder
+      .forPort(9999)
+      .addService(service)
+      .resource[IO]
 
-  val grpcServer = orderService.use(srvr => runServer(srvr))
+  val grpcServer =
+    orderService.use(srvr =>
+      runServer(srvr).evalMap(server => IO(server.start())).useForever
+    )
+
+  // val grpcServer =
+  //   orderService
+  //     .flatMap(x => runServer(x))
+  //     .evalMap(svr => IO(svr.start()))
+  //     .useForever
 }

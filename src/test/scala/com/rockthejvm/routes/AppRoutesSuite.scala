@@ -1,17 +1,28 @@
 package com.rockthejvm.routes
 
 import weaver.*
-import cats.effect.*
 import org.http4s.client.Client
-import org.http4s.*
-import com.comcast.ip4s.*
+import cats.effect.*
+import com.rockthejvm.routes.AppRoutes.restService
+import com.rockthejvm.client.Client.runClient
+import com.rockthejvm.protos.orders.*
+import squants.market.USD
+import fs2.Stream
+import io.grpc.netty.shaded.io.netty.channel.embedded.EmbeddedChannel
 
-object AppRoutesSuite extends IOSuite {
-  test("Requests to restService should return 200 status code") {
-    val request: Request[IO] =
-      Request(
-        method = Method.POST,
-        uri = uri"localhost:8080/submit"
-      )
+object AppRoutesSuite extends SimpleIOSuite {
+  test("/index.html should return proper status code") {
+    Client
+      .fromHttpApp[IO](restService.orNotFound)
+      .statusFromString("/index.html")
+      .map(status => expect(status.code == 200))
   }
+
+  // test("grpc server should return IO[List[String]]") {
+  //   runClient(
+  //     Stream(
+  //       OrderRequest.of(1000, Seq(Item.of("Iphone", 1, USD(999.99))))
+  //     )
+  //   ).map(v => expect(v.isInstanceOf[List[String]]))
+  // }
 }
