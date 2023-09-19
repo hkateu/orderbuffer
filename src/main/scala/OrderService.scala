@@ -34,14 +34,8 @@ object Server {
       .addService(service)
       .resource[IO]
 
-  val grpcServer =
-    orderService.use(srvr =>
-      runServer(srvr).evalMap(server => IO(server.start())).useForever
-    )
+  val grpcServer: Resource[IO, Server] =
+    orderService
+      .flatMap(x => runServer(x))
 
-  // val grpcServer =
-  //   orderService
-  //     .flatMap(x => runServer(x))
-  //     .evalMap(svr => IO(svr.start()))
-  //     .useForever
 }
